@@ -1,9 +1,12 @@
 package com.microservice.demouserservice;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "USER_DETAILS")
@@ -23,6 +26,8 @@ public class UserEntity {
 	private String emailId;
 	@Column(name = "gender")
 	private String gender;
+	@Transient
+	private List<UserOrder> orders;
 
 	public String getUserId() {
 		return userId;
@@ -80,4 +85,11 @@ public class UserEntity {
 		this.gender = gender;
 	}
 
+	public List<UserOrder> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<UserOrder> orders) {
+		this.orders = orders;
+	}
 }

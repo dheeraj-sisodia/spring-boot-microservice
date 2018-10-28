@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 	@Autowired
 	private UserRepository repository;
+	@Autowired
+	private UserOrderProxy orderProxy;
 
 	@GetMapping("/user/userId/{userId}")
 	public UserEntity user(@PathVariable String userId) {
-		return repository.findByUserId(userId);
+		UserEntity user = repository.findByUserId(userId);
+		user.setOrders(orderProxy.retrieveOrderListforUser(userId));
+		return user;
 	}
 }
