@@ -11,3 +11,5 @@ http://localhost:8765/user-service/user/userId/USR1
 http://localhost:8765/order-service/order/orderId/ORD1
 
 http://localhost:8765/order-service/order/userId/USR1
+
+http://localhost:8081/spring-security-oauth-server/oauth/token
