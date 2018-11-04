@@ -1,6 +1,8 @@
 package com.microservice.demooauthauthorizationserver;
 
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ public class CustomTokenEnhancer implements TokenEnhancer {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         final Map<String, Object> additionalInfo = new HashMap<>();
-        additionalInfo.put("organizationName", authentication.getName());
+        additionalInfo.put("organizationName", authentication.getName() + randomAlphabetic(4));
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
         return accessToken;
     }
